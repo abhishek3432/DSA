@@ -1,5 +1,4 @@
-
-// // insert at head singlylinkedlist(collection of node) 
+// //node definition, declaration and implementation
 // #include <iostream>
 // using namespace std;
 
@@ -15,131 +14,158 @@
 //             this->data=data;
 //             this->next=NULL;
 //         }
-//         ~node()
-//         {
-//             int value= this->data;
-//             if(this->next!=NULL)//this check is memory alloted to ptr or not
-//             {
-//                 delete next;//delete heap memory alloted to pointer
-//                 next=NULL;
-
-//             }
-//             cout<<"memory is free for node with data"<<data<<endl;
-//         }
 // };
-
-// void insertAtHead(node*& head, int data)
-// {
-//         node* newnode= new node(data);
-//         newnode->next=head;
-//         head=newnode;
-// }
-
-// void insertAtTail(node*& tail, int data)
-// {
-//     node* newnode= new node(data);
-//     // node* temp= tail;
-//     // while(temp->next!=NULL)
-//     // {
-//     //     temp=temp->next;
-//     // }
-//     // node* tail=temp;
-//     tail->next=newnode;
-//     // tail= tail->next;
-//     tail=newnode;
-// }
-
-// void insertAtKposition(node*& head, int data,int k)
-// {
-//     //if position is head
-//      if(k==1)
-//     {
-//         insertAtHead(head, data);
-//         return ;
-//     }
-
-//     node* newnode=new node(data);
-//     node* temp= head;
-//     for(int i=1; i<k-1; i++)
-//     {
-//         temp=temp->next;
-//     }
-//     newnode->next=temp->next;
-//     temp->next= newnode;
-
-//     // //if position is tail
-//     // if(temp->next==NULL)
-//     // {
-//     //     insertAtTail(head, data);
-//     // }
-// }
-
-// void printllist(node*& head)
-// {
-//     node* temp=head;
-//     while(temp!=NULL)
-//     {
-//         cout<<temp->data<<"->";
-//         temp=temp->next;
-//     }
-//     cout<<endl;
-// }
-
-// void deleteAtPosition(node* head, int position)
-// {
-//     //deletion first node
-//     if(position==1)
-//     {
-//         node* temp=head;
-//         head=head->next;
-//         temp->next=NULL;
-//         delete temp;
-//     }
-//     else
-//     {
-//         //deleting any inbetween node
-//         node* cur=head;
-//         node* pre=NULL;
-//         for(int i=1; i<position; i++)
-//         {
-//             pre=cur;
-//             cur=cur->next;
-//         }
-//         pre->next=cur->next;
-//         cur->next= NULL;
-//         delete cur;
-//     }
-    
-// }
 
 // int main()
 // {
-//     node* newnode=new node(3);
-//     node* head=newnode;
-//     node* tail=newnode;
-    
-//     insertAtHead(head, 2);
-//     insertAtHead(head, 1);
-//     insertAtHead(head, 0);
-//     printllist(head);
-    
-//     insertAtTail(tail, 4);
-//     insertAtTail(tail, 5);
-//     insertAtTail(tail, 6);
-//     printllist(head);
+//     node* n1=new node(1);
+//     cout<<n1->data<<endl;
+//     cout<<n1->next<<endl;
 
-//     insertAtKposition(head, 7, 3);
-//     insertAtKposition(head, 8, 5);
-//     insertAtKposition(head, 8, 1);
-//     printllist(head);
-
-
-//     deleteAtPosition(head, 1);
-//     deleteAtPosition(head, 3);
-//     deleteAtPosition(head, 10);
-//     printllist(head);
 //     return 101;
 // }
+
+// insert at head singlylinkedlist(collection of node) 
+#include <iostream>
+using namespace std;
+
+class node
+{
+    public:
+        int data;
+        node* next;
+
+        //constructor
+        node(int data)
+        {
+            this->data=data;
+            this->next=NULL;
+        }
+        ~node()
+        {
+            int value= this->data;
+            if(this->next!=NULL)//this check is memory alloted to ptr or not
+            {
+                delete next;//delete heap memory alloted to pointer
+                next=NULL;
+
+            }
+            cout<<"memory is free for node with data"<<data<<endl;
+        }
+};
+
+void insertAtHead(node*& head, int data)
+{
+        node* newnode= new node(data);
+        newnode->next=head;
+        head=newnode;
+}
+
+void insertAtTail(node*& tail, int data)
+{
+    node* newnode= new node(data);
+    // node* temp= tail;
+    // while(temp->next!=NULL)
+    // {
+    //     temp=temp->next;
+    // }
+    // node* tail=temp;
+    tail->next=newnode;
+    // tail= tail->next;
+    tail=newnode;
+}
+
+void insertAtKposition(node*& head, int data,int k)
+{
+    //if position is head
+     if(k==1)
+    {
+        insertAtHead(head, data);
+        return ;
+    }
+
+    node* newnode=new node(data);
+    node* temp= head;
+    for(int i=1; i<k-1; i++)
+    {
+        temp=temp->next;
+    }
+    newnode->next=temp->next;
+    temp->next= newnode;
+
+    // //if position is tail
+    // if(temp->next==NULL)
+    // {
+    //     insertAtTail(head, data);
+    // }
+}
+
+void printllist(node*& head)
+{
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+
+void deleteAtPosition(node* head, int position)
+{
+    //deletion first node
+    if(position==1)
+    {
+        node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+    }
+    else
+    {
+        //deleting any inbetween node
+        node* cur=head;
+        node* pre=NULL;
+        for(int i=1; i<position; i++)
+        {
+            pre=cur;
+            cur=cur->next;
+        }
+        pre->next=cur->next;
+        cur->next= NULL;
+        delete cur;
+    }
+    
+}
+
+int main()
+{
+    node* newnode=new node(3);
+    node* head=newnode;
+    node* tail=newnode;
+    
+    insertAtHead(head, 2);
+    insertAtHead(head, 1);
+    insertAtHead(head, 0);
+    printllist(head);
+    
+    insertAtTail(tail, 4);
+    insertAtTail(tail, 5);
+    insertAtTail(tail, 6);
+    printllist(head);
+
+    insertAtKposition(head, 7, 3);
+    insertAtKposition(head, 8, 5);
+    insertAtKposition(head, 8, 1);
+    printllist(head);
+
+
+    deleteAtPosition(head, 1);
+    deleteAtPosition(head, 3);
+    deleteAtPosition(head, 10);
+    printllist(head);
+    return 101;
+}
 
 // //doubly linked list
 // #include <iostream>
